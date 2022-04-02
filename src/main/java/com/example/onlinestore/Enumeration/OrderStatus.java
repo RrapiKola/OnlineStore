@@ -1,4 +1,4 @@
-package com.example.onlinestore.Entity;
+package com.example.onlinestore.Enumeration;
 
 public enum OrderStatus {
 

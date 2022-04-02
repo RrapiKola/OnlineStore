@@ -1,5 +1,6 @@
-package com.example.onlinestore.Entity;
+package com.example.onlinestore.model;
 
+import com.example.onlinestore.Enumeration.OrderStatus;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,8 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name="Order")
-public class OrderEntity {
+@Table(name="orders")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_id")
@@ -36,20 +37,19 @@ public class OrderEntity {
 
     //Status
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
 
     @ManyToMany
-    @JoinTable(name = "orderLine", joinColumns = @JoinColumn(name = "order_id",nullable = false),
+    @JoinTable(name = "orders_orderLines", joinColumns = @JoinColumn(name = "order_id",nullable = false),
             inverseJoinColumns = @JoinColumn(name = "order_line_id", nullable = false))
-    private List<OrderLineEntity> orderLineEntityList;
-
+    private List<OrderLine> orderLine;
 
 
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id",nullable = false)
-    private UserEntity  userEntity;
+    private User user;
 
 }
