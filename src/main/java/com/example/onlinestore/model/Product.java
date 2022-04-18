@@ -24,7 +24,7 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private Double price;
 
     @Enumerated

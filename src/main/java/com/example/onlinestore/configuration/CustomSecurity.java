@@ -5,6 +5,7 @@ import com.example.onlinestore.service.Impl.UserService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -26,7 +27,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @AllArgsConstructor
 @EnableWebSecurity
 public class CustomSecurity extends WebSecurityConfigurerAdapter {
-    UserService userService;
+   @Autowired
+   private UserService userService;
 
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
